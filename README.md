@@ -1,6 +1,6 @@
 # 基于 Typst 的学位论文模板
 
-![image](https://github.com/user-attachments/assets/1e2869b7-5684-40dd-9295-bb819f782de9)
+![image](https://github.com/user-attachments/assets/7d04f231-0d6e-44e9-8e29-efd69c9acfee)
 
 ![image](https://github.com/user-attachments/assets/714b3d3f-e0f5-416a-a7fd-d63ce84b0e0c)
 
