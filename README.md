@@ -18,7 +18,7 @@
 2. 下载本仓库，或者使用 `git clone https://github.com/Remyuu/thesis-typst-cn` 命令克隆本仓库。
 3. 根据 Typst 文档，参考 项目结构 中的说明，按照你的需要修改论文的各个部分。
 
-##日志
+## 日志
 
 ### ☑️已完成
 
