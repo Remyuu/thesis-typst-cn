@@ -1,4 +1,14 @@
 // Remo.typ
+
+/* -----------------------
+
+  您任何有关论文的内容都只需要在「the.typ」中书写。
+  
+  附录内容请前往「/lib/Page/appendix.typ」添加即可。
+  
+  如果有任何疑问欢迎讨论：remthrose@gmail.com
+  
+  ----------------------- */
 #import "lib/lib.typ":* 
 
 #show: doc.with(
@@ -6,7 +16,7 @@
   thesis-info: (
     // 论文标题，将展示在封面、扉页与页眉上
     // 多行标题请使用数组传入 `("thesis title", "with part next line")`，或使用换行符：`"thesis title\nwith part next line"`
-    title: ("基于 Typst 的", "xxx学位论文模板"),
+    title: ("基于 Typst 的", "原神大学学位论文模板"),
     title-en: "A Typst Template for xxx",
 
     // 论文作者信息：学号、姓名、院系、专业、指导老师
@@ -44,63 +54,39 @@
 
 )
 
-
 = 绪论
 
 个人网页：`https://remoooo.com/`，欢迎访问。如果对模版有疑问请联系：remthrose\@gmail\.com。
 
 本模板只是作为本科论文格式示例作用，为尽可能涵盖《毕业论文撰写规范》规定的内容，部分图片或表格与论文内容无关，该模板论文无研究意义，师生只做格式参考。
 
-== 如何使用本Typst模版
+= 如何使用本Typst模版
 
-=== 列表
+== 列表
 
-==== 无序列表
+=== 无序列表
 
 - 无序列表项一
 - 无序列表项二
   - 无序子列表项一
 
-==== 有序列表
+=== 有序列表
 
 + 有序列表项一
 + 有序列表项二
   + 有序子列表项一
   + 有序子列表项二
 
-==== 术语列表
+=== 术语列表
 
 / 术语一: 术语解释
 / 术语二: 术语解释
 
-=== 公式
+== 图表格引用
 
-可以像 Markdown 一样写行内公式 $x + y$，以及带编号的行间公式：
+=== 简单的图片与表格引用
 
-$ phi.alt := (1 + sqrt(5)) / 2 $ <ratio>
-
-引用数学公式需要加上 `eqt:` 前缀，则由@eqt:ratio，我们有：
-
-$ F_n = floor(1 / sqrt(5) phi.alt^n) $
-
-我们也可以通过 `<->` 标签来标识该行间公式不需要编号
-
-$ y = integral_1^2 x^2 dif x $ <->
-
-而后续数学公式仍然能正常编号。
-
-$ F_n = floor(1 / sqrt(5) phi.alt^n) $
-
-其中，$E_s$、$E_c$——基体和涂层的平均弹性模量。
-
-关于公式可以前往 `https://typst.app/docs/reference/math/` 查看。
-
-=== 图表格引用
-
-==== 简单图表格引用
-
-引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:test-image。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
-
+引用@tbl:timing，引用@tbl:timing-tlt，以及@fig:test-image 和@fig:test-image2 。引用图表时，表格和图片分别需要加上 `tbl:`和`fig:` 前缀才能正常显示编号。
 
 #align(center, (stack(dir: ltr)[
   #figure(
@@ -129,19 +115,23 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
   ) <timing-tlt>
 ]))
 
-
 #figure(
   image("media/image1.png", width: 75%),
   caption: [图片测试],
 ) <test-image>
 
-==== 复杂图表格引用
+#figure(
+  image("media/image2.png", width: 50%),
+  caption: [图片测试2],
+) <test-image2>
 
-下面 @tbl:complex-table-test1 和 @tbl:complex-table-test2 是较为复杂的表格。
+
+=== 复杂的图片与表格引用
+
+下面 @tbl:complex-table-test1 和 @tbl:complex-table-test2 是较为复杂的表格。也可以直接使用latex的表格输入。
 
 #figure(
   table(
-      // columns: (16.04%, 11.36%, 29.35%, 18.61%, 24.64%), 
       columns: (5), 
       align: (center, center, center, center, center,), 
       table.cell()[基体], table.cell()[序号], table.cell()[粉末类型和预热温度（$℃$）], table.cell()[失效温度（℃）], table.cell()[Ec计算值（$\G\P\a$）], 
@@ -156,81 +146,87 @@ $ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
 #figure(
   table(
-      columns: (25.96%, 17.52%, 28.12%, 15.96%, 12.44%), align: (center, center, center, center, center,), table.cell(align: center)[字段标识], table.cell(align: center)[字段含义], table.cell(align: center)[数据类型], table.cell(align: center)[是否主键], table.cell(align: center)[是否外键], table.cell(align: center)[ID], table.cell(align: center)[ID], table.cell(align: center)[INTEGER], table.cell(align: center)[是], table.cell(align: center)[否], table.cell(align: center)[VIDEO\_NAME], table.cell(align: center)[视频名称], table.cell(align: center)[VARCHAR2(20)], table.cell(align: center)[否], table.cell(align: center)[否], table.cell(align: center)[VIDEO\_TYPE], table.cell(align: center)[视频类型], table.cell(align: center)[VARCHAR2(20)], table.cell(align: center)[否], table.cell(align: center)[是], table.cell(align: center)[VIDEO\_PATH], table.cell(align: center)[视频路径], table.cell(align: center)[VARCHAR2(20)], table.cell(align: center)[否], table.cell(align: center)[否],
+      columns: (5), 
+      "字段标识", "字段含义", "数据类型", "是否主键", "是否外键", 
+      "ID", "ID", "INTEGER", "是", "否", 
+      "VIDEO\_NAME", "视频名称", "VARCHAR2(20)", "否", "否", 
+      "VIDEO\_TYPE", "视频类型", "VARCHAR2(20)", "否", "是", 
+      "VIDEO\_PATH", "视频路径", "VARCHAR2(20)", "否", "否",
     ),
     caption: [分栏情况示例2]
 ) <complex-table-test2>
 
-=== 参考文献使用
 
-可以像这样引用参考文献：图书#[@蒋有绪1998]和会议#[@中国力学学会1990]。
 
-#figure(
-  image("media/image2.png", width: 50%),
-  caption: [RGB彩色立方体示意图]
-)
-
-= 基础知识
-
-基于视频序列的运动目标检测与跟踪涉及到很多研究领域，如数字图像处理、计算机视觉、信息融合、模式识别与人工智能等。
+== 公式
 
 可以像 Markdown 一样写行内公式 $x + y$，以及带编号的行间公式：
 
-$ phi.alt := (1 + sqrt(5)) / 2 $ <ratio1>
+$ phi.alt := (1 + sqrt(5)) / 2 $ <ratio>
 
-摄像头（camera）又称为电脑相机、电脑眼等，它作为一种视频输入设备，在过去被广泛的运用于视频会议、远程医疗及实时监控等方面#strong[#super[\[];];#footnote[付梦印，邓志红，张继伟．Kalman滤波理论及其在导航系统中的应用\[M\]．北京：科学出版社，2003：89-97．（五号宋体，成文删除）];#strong[#super[\]];];。近些年来，随着互联网技术的发展，网络速度的不断提高，再加上感光成像器件技术的成熟，使得摄像头得到了越来越广泛的应用#strong[#super[\[];];#footnote[邓宇．复杂背景下的运动目标检测技术研究．贵州大学，2007．];#strong[#super[\]];];。
+引用数学公式需要加上 `eqt:` 前缀，则由@eqt:ratio，我们有：
 
-#figure(
-  image("media/image3.png", width: 40%),
-  caption: [手势运动方向检测流程图]
-)
+$ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
-视频序列中运动目标的检测与跟踪是计算机视觉和图像编码研究领域的一个重要课题，在机器人导航、智能监视系统、交通检测、医学图像处理以及视频图像压缩和传输等领域都有广泛的应用#footnote[张爱茜，陈日清，魏东斌，王连生．氯代芳香族化合物对羊角月牙藻的毒性及QSAR分析．中国环境科学，2000．20(2)：102-105．];。运动目标检测就是判断视频序列中是否存在运动目标，并确定运动目标的位置#strong[#super[\[];];#footnote[C.Stauffer，W.E.L.Grimson．Adapitve Background Mixture Models for Real-Timer Tracking\[J\]．Pro Computer Vision and Pattern Recognition (CVPR’99)，1999．（Times New Roman 五号，成文删除）];#strong[#super[\]];];。运动目标的提取主要包括运动检测以及目标提取两个步骤，其中运动检测处于整个视觉监视系统的最底层，是各种后续高级处理如目标分类，行为理解等的基础#strong[#super[\[];];#footnote[#link("http://www.creader.com/news/200112-19/200112-199019.html")
+我们也可以通过 `<->` 标签来标识该行间公式不需要编号
 
-  （注：参考文献具体格式请参照附件6《信息与文献 参考文献著录规则》，成文删除）];#strong[#super[\]];];。
+$ y = integral_1^2 x^2 dif x $ <->
 
-== 视频图像预处理
-=== 常用颜色模型
-颜色模型的用语是在某些标准下用通常可接受的方式简化彩色规范。本质上颜色模型是坐标系统和子空间的规范。位于系统中的每种颜色都由单个点来表示。
+而后续数学公式仍然能正常编号。
 
-（1）RGB彩色模型
+$ F_n = floor(1 / sqrt(5) phi.alt^n) $
 
-在RGB模型中，每种颜色出现在红、绿、蓝的原色光谱分量中，这个模型基于笛卡尔坐标系。
+其中，$E_s$、$E_c$——基体和涂层的平均弹性模量。
 
-图2.1 所示的立方体。图中R、G、B位于3个角上。在该模型中，灰度等级沿着主对角线从原点的黑色到点（1，1，1）的白色分布。
+关于公式可以前往 `https://typst.app/docs/reference/math/` 查看。
 
-#figure(
-  image("media/image4.png", width: 75%),
-  caption: [透平膨胀机的组成结构]
-)
+== 代码
 
-= 视频图像预处理
+这里参考：`https://typst.app/docs/reference/text/raw/#definitions-line`。
 
-== 引言
-本章是视频图像的预处理阶段，首先，获取视频图像；然后对视频图像序列中的每帧图像进行图像预处理。如图3.1所示。
+```
+#if defined(_GLFW_VULKAN_LIBRARY)
+        _glfw.vk.handle = _glfwPlatformLoadModule(_GLFW_VULKAN_LIBRARY);
+#elif defined(_GLFW_WIN32)
+        _glfw.vk.handle = _glfwPlatformLoadModule("vulkan-1.dll");
+#elif defined(_GLFW_COCOA)
+        _glfw.vk.handle = _glfwPlatformLoadModule("libvulkan.1.dylib");
+        if (!_glfw.vk.handle)
+            _glfw.vk.handle = _glfwLoadLocalVulkanLoaderCocoa();
+#elif defined(__OpenBSD__) || defined(__NetBSD__)
+        _glfw.vk.handle = _glfwPlatformLoadModule("libvulkan.so");
+#else
+        _glfw.vk.handle = _glfwPlatformLoadModule("libvulkan.so.1");
+#endif
+```
 
-#figure(
-  image(
-    "media/image5.png",
-  ), 
-  caption: [手势运动方向检测流程图]
-)
+如果有需要，可以加入编程语言的缩写以加入代码高亮。
 
-由图3.1可知，视频图像的预处理阶段，首先，获取视频图像；然后对视频图像序列中的每帧图像进行图像预处理。
+```cpp
+#if defined(_GLFW_VULKAN_LIBRARY)
+        _glfw.vk.handle = _glfwPlatformLoadModule(_GLFW_VULKAN_LIBRARY);
+#elif defined(_GLFW_WIN32)
+        _glfw.vk.handle = _glfwPlatformLoadModule("vulkan-1.dll");
+#elif defined(_GLFW_COCOA)
+        _glfw.vk.handle = _glfwPlatformLoadModule("libvulkan.1.dylib");
+        if (!_glfw.vk.handle)
+            _glfw.vk.handle = _glfwLoadLocalVulkanLoaderCocoa();
+#elif defined(__OpenBSD__) || defined(__NetBSD__)
+        _glfw.vk.handle = _glfwPlatformLoadModule("libvulkan.so");
+#else
+        _glfw.vk.handle = _glfwPlatformLoadModule("libvulkan.so.1");
+#endif
+```
 
+== 参考文献引用
 
+可以像这样引用参考文献：图书#[@蒋有绪1998]和会议#[@中国力学学会1990]。
 
 == 本章小结
-本章主要介绍了图片的格式。
 
-= 结论
+本章主要介绍了Typst的格式。
 
-在Visual c++6.0开发环境下，借助于OpenCV开放平台，设计并实现了基于低端摄像头视频手势运动检测系统。
-（3）结论
-结论作为毕业论文正文的组成部分，单独排写，不加章标题序号，不标注引用文献。
-结论是对整个论文主要成果的归纳总结，要突出创新点，以简练的文字对论文的主要成果进行评价，一般为500字左右。
-
-
+以上也基本覆盖了所有的论文写作格式。
 
 // 致谢
 #acknowledgement[
