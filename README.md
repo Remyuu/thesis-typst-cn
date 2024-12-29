@@ -2,6 +2,11 @@
 
 目前仍在完善中。
 
+## 为什么需要Typst模版？
+
+减少调节Word格式的时间，专注于论文的书写。
+并且使用Typst可以减少很多latex的痛苦，并且语法也比较贴近markdown。
+
 ![image](https://github.com/user-attachments/assets/7d04f231-0d6e-44e9-8e29-efd69c9acfee)
 
 ![image](https://github.com/user-attachments/assets/714b3d3f-e0f5-416a-a7fd-d63ce84b0e0c)
