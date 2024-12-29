@@ -43,9 +43,6 @@
 
   appendix: true,
   
-  // numbering: none, 
-  // numbering: "一",
-  
   content
   
 ) = {
@@ -63,10 +60,10 @@
   // 论文信息默认参数。函数传入参数会完全覆盖参数值，因此需要提供默认参数补充。
   // 彩蛋：如果论文参数不传递作者参数，那么论文就会被署名论文模板作者
   let default-author = (
-    sno: "202115210XXX",
+    sno: "20xxxxxx",
     name: "remo",
-    grade: "2021",
-    department: "cs213",
+    grade: "2000",
+    department: "csxxx",
     major: "cs",
   )
   thesis-info.author = thesis-info.at("author", default: default-author)
@@ -202,7 +199,24 @@
     )
     // 脚注、尾注 宋体小五号
     show footnote.entry: set text(font: 字体.宋体, size: 字号.xiaowu)
+
+    show raw.where(block: false): box.with(
+      fill: luma(240),
+      inset: (x: 3pt, y: 0pt),
+      outset: (y: 3pt),
+      radius: 2pt,
+    )
+    
+    // Display block code in a larger block
+    // with more padding.
+    show raw.where(block: true): block.with(
+      fill: luma(240),
+      inset: 0.4em,
+      radius: 4pt,
+    )
+
     content
+
     // 参考文献
     {
       // 参考文献内容 宋体五号
@@ -210,21 +224,15 @@
       bilingual-bibliography(bibliography: bibliography, full: true)
     }
 
-      // 致谢
+    // 致谢
     acknowledgement-page()
     pagebreak(weak: true)
 
-
-    // 衷心的感谢计算机专业各位老师，在大学学习期间，给予了我极大地鼓励和帮助，在学习上给予了我严谨、耐心的指导，在生活上给与了我亲切、热情的关怀。老师们渊博的学识、谦逊、谨慎的治学作风，一丝不苟、尽职尽责的工作态度以及正直的为人之道，都将是我终身受益，并激励我始终刻苦努力。在此，我向各位老师表示崇高的敬意和衷心的感谢！（小四宋体，成文删除）
-
   }
-
 
     // 附录
   if appendix {
     appendix-part()
     pagebreak(weak: true)
   }
-
-
 }
